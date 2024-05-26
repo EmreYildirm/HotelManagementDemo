@@ -1,3 +1,5 @@
+using HotelManagement.Api;
+
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = new ConfigurationBuilder()
@@ -5,6 +7,7 @@ var configuration = new ConfigurationBuilder()
     .AddEnvironmentVariables()
     .Build();
 
+builder.Services.AddHotelApiServices(configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
