@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelManagement.Api", "HotelManagement.Api\HotelManagement.Api.csproj", "{38D40C8E-0D4B-4E24-8566-5F799A301F5F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportService.Api", "ReportService.Api\ReportService.Api.csproj", "{70D44CBE-CE93-4007-9C40-FC9421244481}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{38D40C8E-0D4B-4E24-8566-5F799A301F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38D40C8E-0D4B-4E24-8566-5F799A301F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38D40C8E-0D4B-4E24-8566-5F799A301F5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70D44CBE-CE93-4007-9C40-FC9421244481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70D44CBE-CE93-4007-9C40-FC9421244481}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70D44CBE-CE93-4007-9C40-FC9421244481}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70D44CBE-CE93-4007-9C40-FC9421244481}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
