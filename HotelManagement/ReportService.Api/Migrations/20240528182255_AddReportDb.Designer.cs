@@ -12,7 +12,7 @@ using ReportService.Api.Infrastructure.Database;
 namespace ReportService.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240528161709_AddReportDb")]
+    [Migration("20240528182255_AddReportDb")]
     partial class AddReportDb
     {
         /// <inheritdoc />
@@ -31,6 +31,24 @@ namespace ReportService.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime>("ReportDemandDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Reports");
+                });
+
+            modelBuilder.Entity("ReportService.Api.Domain.ReportContent", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
                     b.Property<int?>("HotelCount")
                         .HasColumnType("integer");
 
@@ -40,15 +58,30 @@ namespace ReportService.Api.Migrations
                     b.Property<int?>("PhoneNumberCount")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("ReportDemandDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("State")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("ReportId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Reports");
+                    b.HasIndex("ReportId");
+
+                    b.ToTable("ReportContents");
+                });
+
+            modelBuilder.Entity("ReportService.Api.Domain.ReportContent", b =>
+                {
+                    b.HasOne("ReportService.Api.Domain.Report", "Report")
+                        .WithMany("ReportContents")
+                        .HasForeignKey("ReportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Report");
+                });
+
+            modelBuilder.Entity("ReportService.Api.Domain.Report", b =>
+                {
+                    b.Navigation("ReportContents");
                 });
 #pragma warning restore 612, 618
         }
