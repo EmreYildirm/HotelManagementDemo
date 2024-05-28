@@ -16,9 +16,17 @@ public class ReportController : ControllerBase
 
     [HttpGet("demand-report")]
     [ProducesResponseType(typeof(Features.Report.Demand.Response), 200)]
-    public async Task<Features.Report.Demand.Response> AddHotel()
+    public async Task<Features.Report.Demand.Response> DemandReport()
     {
         Features.Report.Demand.Request request = new();
+        return await _mediator.Send(request);
+    }
+
+    [HttpGet("get-reports")]
+    [ProducesResponseType(typeof(List<Features.Report.GetReports.Response>), 200)]
+    public async Task<List<Features.Report.GetReports.Response>> GetReports()
+    {
+        Features.Report.GetReports.Request request = new();
         return await _mediator.Send(request);
     }
 }
